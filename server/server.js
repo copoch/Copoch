@@ -6,13 +6,29 @@ import { renderToString } from 'react-dom/server'
 import configureStore from '../common/store/configureStore'
 import { fetchCounter } from '../common/api/counter'
 import App from '../common/containers/App'
+import webpack from 'webpack'
+import webpackKoa2Middleware from 'webpack-koa2-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.config'
+import koa2HMRMiddleware from 'koa2-hmr-middleware'
 
 const app = new Koa()
 const port = 9999
 
+app.use(koa2HMRMiddleware(webpack(webpackConfig), {
+  dev: { noInfo: true, publicPath: webpackConfig.output.publicPath }
+}))
+// app.use(webpackKoa2Middleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+// app.use(webpackHotMiddleware(compiler))
+
 const handleRender = async (ctx) => {
   const apiResult = await fetchCounter()
   const request = ctx.request
+
+  if (request.path !== '/' ) {
+    return
+  }
+
   const params = qs.parse(request.querystring)
   const counter = parseInt(params.counter, 10) || apiResult || 0
   //

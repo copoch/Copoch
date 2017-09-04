@@ -1,11 +1,18 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
-        // "browsers": ["last 2 versions", "safari >= 7"]
-      }
-    }],
-    "react"
-  ]
+    "presets": [
+        ["env", {
+            "targets": {
+                "node": "current"
+                    // "browsers": ["last 2 versions", "safari >= 7"]
+            }
+        }],
+        "react"
+    ],
+    "env": {
+        "development": {
+            "presets": [
+                "react-hmre"
+            ]
+        }
+    }
 }
