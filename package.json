@@ -1,0 +1,39 @@
+{
+    "name": "copoch",
+    "version": "0.0.1",
+    "description": "Copoch同构项目",
+    "main": " ",
+    "scripts": {
+        "start": "node server/index.js",
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/copoch/copoch.git"
+    },
+    "author": "煜林",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/copoch/copoch/issues"
+    },
+    "homepage": "https://github.com/copoch/copoch#readme",
+    "devDependencies": {
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-react": "^6.24.1",
+        "webpack": "^3.5.5"
+    },
+    "dependencies": {
+        "babel-register": "^6.26.0",
+        "koa": "^2.3.0",
+        "prop-types": "^15.5.10",
+        "qs": "^6.5.0",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "react-redux": "^5.0.6",
+        "redux-promise": "^0.5.3",
+        "redux-thunk": "^2.2.0"
+    }
+}
