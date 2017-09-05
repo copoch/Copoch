@@ -7,8 +7,6 @@ import configureStore from '../common/store/configureStore'
 import { fetchCounter } from '../common/api/counter'
 import App from '../common/containers/App'
 import webpack from 'webpack'
-import webpackKoa2Middleware from 'webpack-koa2-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../webpack.config'
 import koa2HMRMiddleware from 'koa2-hmr-middleware'
 
