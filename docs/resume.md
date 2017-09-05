@@ -1,4 +1,13 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+</head>
+
 <style type="text/css">
+  .markdown-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .markdown-body h1 {
     text-align: center;
   }
@@ -120,6 +129,6 @@
 ## 标签清单
 * **基础：** HTML／JAVAScript／CSS／Node／Koa
 * **框架：** React／Redux、Vue／Vuex、WEEX
-* **工程：** Webpack／Less／ES6
+* **工程：** Webpack／Less／ES6／TypeScript
 * **版本：** Git／Charles／VScode／Sublime
 * **平台：** Mac／Chrome／H5、iOS／Android
