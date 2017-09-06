@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server/index.js",
     "test": "test",
-    "build": "webpack"
+    "build": "webpack",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -25,10 +26,14 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
+    "commitizen": "^2.9.6",
+    "conventional-changelog": "^1.1.5",
+    "cz-conventional-changelog": "^2.0.0",
     "koa-convert": "^1.2.0",
     "koa-webpack": "^1.0.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "validate-commit-msg": "^2.14.0",
     "webpack": "^3.5.5"
   },
   "dependencies": {
@@ -42,5 +47,10 @@
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
