@@ -7,6 +7,7 @@
     "start": "node server/index.js",
     "test": "test",
     "build": "webpack",
+    "precommit": "validate-commit-msg",
     "commit": "git-cz"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "commitizen": "^2.9.6",
     "conventional-changelog": "^1.1.5",
     "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.14.3",
     "koa-convert": "^1.2.0",
     "koa-webpack": "^1.0.0",
     "less": "^2.7.2",
