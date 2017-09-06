@@ -7,8 +7,7 @@
     "start": "node server/index.js",
     "test": "test",
     "build": "webpack",
-    "precommit": "validate-commit-msg",
-    "commit": "git-cz"
+    "commit": "git-cz && validate-commit-msg"
   },
   "repository": {
     "type": "git",
