@@ -25,13 +25,11 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
-    "koa2-hmr-middleware": "^0.1.4",
+    "koa-convert": "^1.2.0",
+    "koa-webpack": "^1.0.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
-    "webpack": "^3.5.5",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.18.2",
-    "webpack-koa2-middleware": "^2.1.0"
+    "webpack": "^3.5.5"
   },
   "dependencies": {
     "babel-register": "^6.26.0",

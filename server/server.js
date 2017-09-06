@@ -8,16 +8,20 @@ import { fetchCounter } from '../common/api/counter'
 import App from '../common/containers/App'
 import webpack from 'webpack'
 import webpackConfig from '../webpack.config'
-import koa2HMRMiddleware from 'koa2-hmr-middleware'
+import koaMiddleware from 'koa-webpack';
 
 const app = new Koa()
 const port = 9999
 
-app.use(koa2HMRMiddleware(webpack(webpackConfig), {
-  dev: { noInfo: true, publicPath: webpackConfig.output.publicPath }
+const compiler = webpack(webpackConfig)
+
+app.use(koaMiddleware({
+  compiler,
+  dev: {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath
+  }
 }))
-// app.use(webpackKoa2Middleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
-// app.use(webpackHotMiddleware(compiler))
 
 const handleRender = async (ctx) => {
   const apiResult = await fetchCounter()
@@ -50,14 +54,13 @@ const renderFullPage = (html, preloadedState) => {
     <html>
       <head>
         <meta charset="utf-8" />
-        <title>Redux Universal Example</title>
+        <title>Redux Universal</title>
       </head>
       <body>
         <div id="app">${html}</div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
         </script>
-        <script src="/static/hot.js"></script>
         <script src="/static/main.js"></script>
       </body>
     </html>
