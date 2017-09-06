@@ -7,8 +7,8 @@
     "start": "node server/index.js",
     "test": "test",
     "build": "webpack",
-    "ci": "git-cz | validate-commit-msg",
-    "postcommit": ""
+    "ci": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0 >> CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "commitizen": "^2.9.6",
-    "conventional-changelog": "^1.1.5",
+    "conventional-changelog-cli": "^1.3.3",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.3",
     "koa-convert": "^1.2.0",
