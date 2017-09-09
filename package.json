@@ -32,6 +32,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.3",
     "koa-convert": "^1.2.0",
+    "koa-session": "^5.5.0",
     "koa-webpack": "^1.0.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
@@ -40,15 +41,28 @@
   },
   "dependencies": {
     "babel-register": "^6.26.0",
+    "co": "^4.6.0",
     "koa": "^2.3.0",
+    "koa-basic-auth": "^2.0.0",
+    "koa-body": "^2.3.0",
+    "koa-compose": "^4.0.0",
+    "koa-csrf": "^3.0.6",
+    "koa-logger": "^3.0.1",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa-views": "^6.0.2",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
+    "raw-body": "^2.3.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "streaming-json-stringify": "^3.1.0",
+    "swig": "^1.4.2"
   },
   "config": {
     "commitizen": {
