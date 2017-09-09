@@ -35,11 +35,14 @@ app.use(koaMiddleware({
   compiler,
   dev: {
     noInfo: true,
-    publicPath: webpackConfig.output.publicPath
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true
+    }
   }
 }))
 
-router.all()
+
 
 // const handleRender = async (ctx) => {
 //   const apiResult = await fetchCounter()
