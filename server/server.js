@@ -39,6 +39,8 @@ app.use(koaMiddleware({
   }
 }))
 
+router.all()
+
 // const handleRender = async (ctx) => {
 //   const apiResult = await fetchCounter()
 //   const request = ctx.request
