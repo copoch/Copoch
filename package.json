@@ -9,7 +9,10 @@
     "build": "webpack",
     "ci": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0 >> CHANGELOG.md",
-    "pm2": "pm2 start server/index.js"
+    "pm2:start": "pm2 start server/index.js --name copoch --watch",
+    "pm2:restart": "pm2 restart server/index.js  --name copoch",
+    "pm2:stop": "pm2 stop server/index.js  --name copoch",
+    "pm2:monit": "pm2 monit"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "co": "^4.6.0",
+    "ejs": "^2.5.7",
     "graphql": "^0.11.3",
     "koa": "^2.3.0",
     "koa-basic-auth": "^2.0.0",

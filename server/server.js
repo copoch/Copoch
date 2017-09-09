@@ -20,16 +20,18 @@ import co from 'co'
 import koaBody from 'koa-body'
 import koaStatic from 'koa-static'
 import compose from 'koa-compose'
-import koaRouter from 'koa-router'
 import koaCSRF from 'koa-csrf'
 import logger from 'koa-logger'
 import koaViews from 'koa-views'
 
+import router from './router'
+
 const app = new Koa()
 const port = 9999
-const router = koaRouter()
-
 const compiler = webpack(webpackConfig)
+
+// shorthand
+const join = path.join
 
 app.use(koaMiddleware({
   compiler,
@@ -42,7 +44,16 @@ app.use(koaMiddleware({
   }
 }))
 
-
+app.use(logger())
+app.use(koaBody())
+app.use(koaStatic(join(__dirname, 'public')))
+app.use(koaViews(join(__dirname, 'views'), {
+  map: {
+    html: 'ejs'
+  }
+}))
+app.use(router.routes())
+app.use(router.allowedMethods())
 
 // const handleRender = async (ctx) => {
 //   const apiResult = await fetchCounter()
