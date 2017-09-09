@@ -11,5 +11,5 @@ vscode 缩放|完结|
 1. 安装 validate-commit-msg 报下面的错误
 npm WARN deprecated validate-commit-msg@2.14.0: Check out CommitLint which provides the same functionality with a more user-focused experience.
 
-2. 
+2. https://github.com/hechuanhua/blog.git
 
