@@ -12,7 +12,8 @@
     "pm2:start": "pm2 start server/index.js --name copoch --watch",
     "pm2:restart": "pm2 restart server/index.js  --name copoch",
     "pm2:stop": "pm2 stop server/index.js  --name copoch",
-    "pm2:monit": "pm2 monit"
+    "pm2:monit": "pm2 monit",
+    "db": "mongod --dbpath=../db/data --port 27017"
   },
   "repository": {
     "type": "git",
@@ -47,7 +48,9 @@
     "babel-register": "^6.26.0",
     "co": "^4.6.0",
     "ejs": "^2.5.7",
+    "es6-promise": "^4.1.1",
     "graphql": "^0.11.3",
+    "isomorphic-fetch": "^2.2.1",
     "koa": "^2.3.0",
     "koa-basic-auth": "^2.0.0",
     "koa-body": "^2.3.0",
@@ -59,6 +62,9 @@
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "koa-views": "^6.0.2",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.10",
+    "normalize.css": "^7.0.0",
     "pm2": "^2.6.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
@@ -66,6 +72,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
