@@ -1,69 +1,47 @@
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-</head>
-
 <style type="text/css">
-  .markdown-body {
-    padding-left: 10px;
-    padding-right: 10px;
+  .post-info {
+    display: none;
   }
 
-  .markdown-body h1 {
-    text-align: center;
-  }
-
-  /*.markdown-body dl {
-    padding-left: 2em;
-  }
-
-  .markdown-body dl:before {
-
-  }*/
-
-  .markdown-body dl dt {
-    font-style: normal;
-  }
-
-  .markdown-body dl dd {
-    margin-bottom: 0;
+  h1, h2 {
+    border-bottom: 1px solid #eeeeee;
   }
 </style>
 
 # 个人简历
 
 ## 联系方式
-<ul>
-  <li>
-    <label for="name">姓名：</label>曾卫林
-  </li>
-  <li>
-    <label for="phone">手机：</label>15801766493
-  </li>
-  <li>
-    <label for="email">邮箱：</label>weilinonline@163.com
-  </li>
-  <li hidden>
-    <label for="blog">主站：</label>www.weilin.design【coming soon】
-  </li>
-</ul>
+
+* **姓名：** 曾卫林
+* **手机：** 15801766493
+* **邮箱：** weilinonline@163.com
 
 ## 求职意向
-资深前端工程师/前端专家
+
+##### 资深前端工程师 / 前端专家
 
 ## 工作经历
-<dl>
-  <dt>阿里巴巴（中国）网络技术有限公司 - 新零售技术事业群</dt>
-  <dd>2016年2月～至今</dd>
-  <dd>CBU技术部大市场无线前端</dd>
-  <dt>上海携程国际旅行社有限公司 - 团队游SBU</dt>
-  <dd>2014/03～2016/02</dd>
-  <dd>旅游保险无线项目</dd>
-  <dt>公平价 - 技术部</dt>
-  <dd>2012/07～2014/03</dd>
-  <dd>网站开发、前端架构</dd>
-</dl>
+
+##### 阿里巴巴（中国）网络技术有限公司 - 新零售技术事业群 - CBU技术部大市场前端 
+
+* **时间：** 2016年2月～至今
+* **岗位：** 资深前端工程师
+* **职责：** 前端技术攻关；承接业务 H5 项目，触达业务 KPI
+
+##### 上海携程国际旅行社有限公司 - 团队游SBU
+
+* **时间：** 2014/03～2016/02
+* **岗位：** 高级前端工程师
+* **职责：** 负责旅游保险无线项目
+
+##### 公平价 - 技术部
+
+* **时间：** 2012/07～2014/03
+* **岗位：** 前端工程师
+* **职责：** 网站开发、前端架构
 
 ## 技能清单
+
 1. 掌握 React 生态技术栈，能快速产出 WEEX 动态化解决方案【详细技能标签，查看最后的 # <b>标签清单</b> #】
 2. 快速熟悉业务领域模型，分解系统边界，选择合适的设计模式及合理的解决方案实现安全、高性能、高维护性、高可用性的前端系统，并能够持续的进行优化
 3. 能够主导部门内的多角色协同需求或项目的计划安排和优先级, 能够合理的制定开发计划, 协调资源并跟踪完成
@@ -71,6 +49,7 @@
 5. 兼修攻关计算机图形学，了解 OpenGL、WebGL API；研究和探索创新的 Web 3D 交互方式，沉淀反哺到团队与产品中
 
 ## 项目经验
+
 #### 1. 电商大促
 
   * **背景：** 每年的面向 B 类业务大促，以及日常的行业大促，投入大量的人力、物力，提高交易频次，拉动成交量，实现业务目标
@@ -117,14 +96,16 @@
   * **业绩：** 项目上线后，达到首页秒开，兼容主流的机型（Android 4.0+ 和 iOS 7+）几乎每月 2 次发布的节奏，实现功能组件化拆分，实现链路页面按需加载，业务体验优化，触达用户极致体验。保险后期得到上层老板的认可，布点到携程大首页和各个业务方。期间还和兄弟团队共建，抽象出许多的业务DPL组件和平台。在2015年3月首次超过 PC 下单量，占比达到 **53%** 以上。
 
 ## 教育经历
-<dl>
-  <dt>南昌大学</dt>
-  <dd>本科</dd>
-  <dd>计算机科学与技术</dd>
-  <dd>2012年毕业</dd>
-  <dt>英语六级</dt>
-  <dd>英语阅读书写无障碍</dd>
-</dl>
+
+##### 南昌大学
+
+* 本科
+* 计算机科学与技术
+* 2012年毕业
+
+##### 英语六级
+
+* 英语阅读书写无障碍
 
 ## 标签清单
 * **基础：** HTML／JAVAScript／CSS／Node／Koa
