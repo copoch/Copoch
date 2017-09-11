@@ -23,10 +23,7 @@ import compose from 'koa-compose'
 import koaCSRF from 'koa-csrf'
 import logger from 'koa-logger'
 import koaViews from 'koa-views'
-import { insertDocuments, findDocuments } from './db'
-import router from './router'
-
-import { blog as blogApi } from './api'
+// import router from './router'
 
 const app = new Koa()
 const port = 9999
@@ -46,70 +43,52 @@ const join = path.join
 //   }
 // }))
 
-// const handleRender = async (ctx) => {
-//   const insertResult = await insertDocuments({
-//     api: 'mtop.copoch.website.queryBlogList',
-//     params: {
-//       title: 'hello',
-//       content: '你好，世界！！！'
-//     }
-//   })
+const handleRender = async (ctx) => {
+  const apiResult = await fetchCounter()
+  const request = ctx.request
 
-//   if (insertResult.status) {
-//     const findResult = await findDocuments({
-//       api: 'mtop.copoch.website.queryBlogList',
-//       params: {
-//         title: 'hello',
-//         content: '你好，世界！！！'
-//       }
-//     })
-//   }
+  if (request.path !== '/' ) {
+    return
+  }
 
-  // const apiResult = await fetchCounter()
-  // const request = ctx.request
+  const params = qs.parse(request.querystring)
+  const counter = parseInt(params.counter, 10) || apiResult || 0
+  //
+  const preloadedState = { counter }
+  const store = configureStore(preloadedState)
 
-  // if (request.path !== '/' ) {
-  //   return
-  // }
+  const html = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 
-  // const params = qs.parse(request.querystring)
-  // const counter = parseInt(params.counter, 10) || apiResult || 0
-  // //
-  // const preloadedState = { counter }
-  // const store = configureStore(preloadedState)
+  const finalState = store.getState()
 
-  // const html = renderToString(
-  //   <Provider store={store}>
-  //     <App />
-  //   </Provider>
-  // )
+  ctx.body = renderFullPage(html, finalState)
+}
 
-  // const finalState = store.getState()
-
-  // ctx.body = renderFullPage(html, finalState)
-// }
-
-// const renderFullPage = (html, preloadedState) => {
-//   return `
-//     <!doctype html>
-//     <html>
-//       <head>
-//         <meta charset="utf-8" />
-//         <title>Redux Universal</title>
-//       </head>
-//       <body>
-//         <div id="app">${html}</div>
-//         <script>
-//           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
-//         </script>
-//         <script src="/static/main.js"></script>
-//       </body>
-//     </html>
-//     `
-// }
+const renderFullPage = (html, preloadedState) => {
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <title>Redux Universal</title>
+      </head>
+      <body>
+        <div id="app">${html}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
+        </script>
+        <script src="/static/main.js"></script>
+      </body>
+    </html>
+    `
+}
 
 app.use(logger())
-// app.use(handleRender);
+app.use(handleRender);
 app.use(koaBody({
   multipart: true
 }))
@@ -122,8 +101,8 @@ app.use(koaViews(join(__dirname, 'views'), {
 
 app.keys = ['hello', 'world']
 app.use(session(app))
-app.use(router.routes())
-app.use(router.allowedMethods())
+// app.use(router.routes())
+// app.use(router.allowedMethods())
 
 app.listen(port, (error) => {
   if (error) {
