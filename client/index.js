@@ -4,17 +4,18 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from '../common/store/configureStore'
 import App from '../common/containers/App'
-import { BrowserRouter } from 'react-router'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 
 const preloadedState = window.__PRELOADED_STATE__
 const store = configureStore(preloadedState)
-const rootElement = document.getElementById('app')
 
 render(
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <Router>
       <App />
-    </Provider>
-  </BrowserRouter>,
-  rootElement
+    </Router>
+  </Provider>,
+  document.getElementById('app')
 )

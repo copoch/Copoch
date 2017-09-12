@@ -7,3 +7,5 @@ const NotFound = () => (
     </div>
   </Status>
 )
+
+export default NotFound

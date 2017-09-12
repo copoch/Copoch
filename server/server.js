@@ -25,7 +25,9 @@ import logger from 'koa-logger'
 import koaViews from 'koa-views'
 
 //
-import { StaticRouter } from 'react-router'
+import {
+  StaticRouter as Router
+} from 'react-router'
 import App from './components/App'
 
 // import router from './router'
@@ -49,28 +51,20 @@ app.use(koaMiddleware({
 }))
 
 const handleRender = async (ctx) => {
-  const apiResult = await fetchCounter()
-  const request = ctx.request
-
-  // if (request.path !== '/' ) {
-  //   return
-  // }
-
-  const params = qs.parse(request.querystring)
-  const counter = parseInt(params.counter, 10) || apiResult || 0
-  //
-  const preloadedState = { counter }
-  const store = configureStore(preloadedState)
-
+  // const apiResult = await fetchCounter()
+  // const request = ctx.request
+  // const params = qs.parse(request.querystring)
+  // const counter = parseInt(params.counter, 10) || apiResult || 0
+  // const preloadedState = { counter }
+  // const store = configureStore(preloadedState)
+  const store = configureStore()
   const context = {}
   const markup = renderToString(
-    <StaticRouter
+    <Router
       location={ctx.url}
       context={context}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </StaticRouter>
+      <App />
+    </Router>
   )
 
   if (context.url) {
