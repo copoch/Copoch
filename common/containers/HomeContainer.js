@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Home from '../components/Home'
-import * as HomeActions from '../actions/home.action'
+import * as HomeActions from '../actions'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 
