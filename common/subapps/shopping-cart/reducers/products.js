@@ -25,6 +25,7 @@ const byId = (state = {}, action) => {
       }
     default:
       const { productId } = action
+
       if (productId) {
         return {
           ...state,
