@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -13,16 +13,26 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
 
-const store = createStore(
-  reducer,
-  applyMiddleware(...middleware)
-)
+class ShopCart extends Component {
+  constructor(props) {
+    super(props)
+    this.store = createStore(
+      reducer,
+      applyMiddleware(...middleware)
+    )
+  }
 
-store.dispatch(getAllProducts())
+  componentWillMount() {
+    this.store.dispatch(getAllProducts())
+  }
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+  render() {
+    return (
+      <Provider store={this.store}>
+        <App />
+      </Provider>
+    )
+  }
+}
+
+export default ShopCart

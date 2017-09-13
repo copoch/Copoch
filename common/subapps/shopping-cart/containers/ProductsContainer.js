@@ -27,9 +27,13 @@ ProductsContainer.propTypes = {
   addToCart: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
-})
+const mapStateToProps = state => {
+  console.log(state)
+
+  return ({
+    products: getVisibleProducts(state.products)
+  })
+}
 
 export default connect(
   mapStateToProps,
