@@ -66,6 +66,7 @@
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "koa-views": "^6.0.2",
+    "markdown-it": "^8.4.0",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.10",
     "normalize.css": "^7.0.0",

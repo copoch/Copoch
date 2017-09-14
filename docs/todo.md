@@ -13,3 +13,7 @@ npm WARN deprecated validate-commit-msg@2.14.0: Check out CommitLint which provi
 
 2. https://github.com/hechuanhua/blog.git
 
+## 更新版本
+1. 实现一个编辑器
+
+2. 
