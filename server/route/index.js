@@ -11,10 +11,16 @@ import {
   StaticRouter as Router
 } from 'react-router'
 
-import App from '../../common/containers/App'
+import Index from '../../common/containers'
+import { Blog } from '../subapps'
+
+const appMap = {
+  'index': Index,
+  'blog': Blog
+}
 
 const router = new KoaRouter()
-const generateMarkup = (markup, store) => {
+const generateMarkup = (markup, store, entry) => {
   return `
     <!doctype html>
     <html>
@@ -27,48 +33,56 @@ const generateMarkup = (markup, store) => {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\x3c')}
         </script>
-        <script src="/static/main.js"></script>
+        <script src="/static/${entry}.js"></script>
       </body>
     </html>
   `
 }
+const render = async (ctx, getInitData = () => {}) => {
+  const app = ctx.params.app
+  const AppIndex = appMap[app]
+  const demoData = await getInitData()
+  const preloadedState = { initData: demoData }
+  const store = configureStore(preloadedState)
+  const context = {}
+  const markup = renderToString(
+    <Provider store={store}>
+      <Router
+        location={ctx.url}
+        context={context}>
+        <AppIndex />
+      </Router>
+    </Provider>
+  )
+
+  if (context.url) {
+    ctx.status = 301
+    ctx.redirect(context.url)
+    ctx.body = 'Redirecting to ' + context.url
+  } else {
+    ctx.status = 200
+    ctx.body = generateMarkup(markup, store, app)
+  }
+}
 
 router
   .get('/', (ctx, next) => {
+    ctx.params.app = 'index'
+    return render(ctx, async () => {
+      const request = ctx.request
+      const params = qs.parse(request.querystring)
+      let counter = parseInt(params.counter, 10)
 
+      if (!counter) {
+        counter = await fetchCounter()
+        !counter && (counter =  0)
+      }
+
+      return await counter
+    })
   })
-  .get('/blog', async (ctx, next) => {
-    const request = ctx.request
-    const params = qs.parse(request.querystring)
-    let counter = parseInt(params.counter, 10)
-
-    if (!counter) {
-      counter = await fetchCounter()
-      !counter && (counter =  0)
-    }
-
-    const demoData = await fetchDemo()
-    const preloadedState = { counter, essay: demoData }
-    const store = configureStore(preloadedState)
-    const context = {}
-    const markup = renderToString(
-      <Provider store={store}>
-        <Router
-          location={ctx.url}
-          context={context}>
-          <App />
-        </Router>
-      </Provider>
-    )
-
-    if (context.url) {
-      ctx.status = 301
-      ctx.redirect(context.url)
-      ctx.body = 'Redirecting to ' + context.url
-    } else {
-      ctx.status = 200
-      ctx.body = generateMarkup(markup, store)
-    }
+  .get('/:app', (ctx, next) => {
+    return render(ctx, fetchDemo)
   })
   // .get('/register', (ctx, next) => {
   //   return ctx.render('register', {

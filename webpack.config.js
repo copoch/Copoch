@@ -3,7 +3,8 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
-      main: ['webpack-hot-middleware/client', './client/index.js']
+      index: ['webpack-hot-middleware/client', './client/index.js'],
+      blog: ['webpack-hot-middleware/client', './client/blog.js']
     },
     output: {
       path: path.join(__dirname, 'build'),

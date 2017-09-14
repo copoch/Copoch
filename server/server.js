@@ -31,9 +31,13 @@ import {
   StaticRouter as Router
 } from 'react-router'
 
-import App from '../common/containers/App'
+// import Index from '../common/containers'
 import router from './route'
+import { Blog } from './subapps'
 
+const appMap = {
+  '/blog': Blog
+}
 const app = new Koa()
 const port = 9999
 const compiler = webpack(webpackConfig)
@@ -104,7 +108,7 @@ const initRender = async (ctx) => {
   }
 }
 
-// app.use(logger())
+app.use(logger())
 // app.use(initRender);
 // app.use(koaBody({
 //   multipart: true

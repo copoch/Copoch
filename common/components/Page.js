@@ -9,7 +9,7 @@ import NotFound from './NotFound'
 import Home from '../containers/HomeContainer'
 import About from './About'
 import Topics from './Topics'
-import Blog from '../subapps/blog'
+import Blog from '../subapps/blog/containers'
 
 const Page = (props) => (
   <div>

@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from '../common/store/configureStore'
-import Index from '../common/containers'
+import Index from '../common/subapps/blog/containers'
 import {
   BrowserRouter as Router
 } from 'react-router-dom'
