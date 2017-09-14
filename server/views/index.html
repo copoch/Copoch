@@ -1,13 +1,16 @@
-<% include partials/header.html %>
-
-<main>
-  <h1>煜林的个人网站</h1>
-  <p>Yulin's Personal Website</p>
-  <ul>
-    <li></li>
-  </ul>
-</main>
-
-<% include partials/footer.html %>
-
-
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>个人网站</title>
+</head>
+<body>
+  <div id="app">${markup}</div>
+  <script>
+    window.__PRELOADED_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\x3c')}
+  </script>
+  <script src="${entry}"></script>
+</body>
+</html>

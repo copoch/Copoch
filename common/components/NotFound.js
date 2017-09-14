@@ -1,3 +1,4 @@
+import React from 'react'
 import Status from '../modules/status'
 
 const NotFound = () => (

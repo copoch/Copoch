@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Route
 } from 'react-router'
@@ -5,7 +6,7 @@ import {
 const Status = ({ code, children }) => (
   <Route render={({ staticContext }) => {
       if (staticContext) {
-        statucContext.status = code
+        staticContext.status = code
       }
       return children
     }} />

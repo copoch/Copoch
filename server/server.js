@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 import configureStore from '../common/store/configureStore'
 import { fetchCounter } from '../common/api/counter'
+import { fetchDemo } from '../common/api/essay'
 // import App from '../common/containers/App'
 import webpack from 'webpack'
 import webpackConfig from '../webpack.config'
@@ -23,14 +24,15 @@ import compose from 'koa-compose'
 import koaCSRF from 'koa-csrf'
 import logger from 'koa-logger'
 import koaViews from 'koa-views'
+import parseurl from 'parseurl'
 
 //
 import {
   StaticRouter as Router
 } from 'react-router'
-import App from './components/App'
 
-// import router from './router'
+import App from '../common/containers/App'
+import router from './route'
 
 const app = new Koa()
 const port = 9999
@@ -52,25 +54,29 @@ app.use(koaMiddleware({
 
 const initRender = async (ctx) => {
   const request = ctx.request
+
   const params = qs.parse(request.querystring)
 
+  console.log(request.url, parseurl(request))
   let counter = parseInt(params.counter, 10)
 
   if (!counter) {
     counter = await fetchCounter()
-
     !counter && (counter =  0)
   }
 
-  const preloadedState = { counter }
+  const demoData = await fetchDemo()
+  const preloadedState = { counter, essay: demoData }
   const store = configureStore(preloadedState)
   const context = {}
   const markup = renderToString(
-    <Router
-      location={ctx.url}
-      context={context}>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router
+        location={ctx.url}
+        context={context}>
+        <App />
+      </Router>
+    </Provider>
   )
 
   if (context.url) {
@@ -98,22 +104,21 @@ const initRender = async (ctx) => {
   }
 }
 
-app.use(logger())
-app.use(initRender);
+// app.use(logger())
+// app.use(initRender);
 // app.use(koaBody({
 //   multipart: true
 // }))
 // app.use(koaStatic(join(__dirname, 'public')))
-// app.use(koaViews(join(__dirname, 'views'), {
+// app.use(koaViews(join(__dirname, 'views')), {
 //   map: {
 //     html: 'ejs'
 //   }
-// }))
-
+// })
 // app.keys = ['hello', 'world']
 // app.use(session(app))
-// app.use(router.routes())
-// app.use(router.allowedMethods())
+app.use(router.routes())
+app.use(router.allowedMethods())
 
 app.listen(port, (error) => {
   if (error) {

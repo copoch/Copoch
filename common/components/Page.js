@@ -9,16 +9,15 @@ import NotFound from './NotFound'
 import Home from '../containers/HomeContainer'
 import About from './About'
 import Topics from './Topics'
-import ShopCart from '../subapps/shopping-cart'
+import Blog from '../subapps/blog'
 
 const Page = (props) => (
   <div>
     <Header />
 
-    <ShopCart />
-
     <Switch>
-      <Route exact path='/' component={Home}/>
+      <Route exact path='/' component={Home} />
+      <Route path='/blog' component={Blog} />
       <Route path='/topics' component={Topics} />
       <Route path='/about' component={About} />
       <Route component={NotFound} />
