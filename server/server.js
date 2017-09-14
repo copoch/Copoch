@@ -50,14 +50,20 @@ app.use(koaMiddleware({
   }
 }))
 
-const handleRender = async (ctx) => {
-  // const apiResult = await fetchCounter()
-  // const request = ctx.request
-  // const params = qs.parse(request.querystring)
-  // const counter = parseInt(params.counter, 10) || apiResult || 0
-  // const preloadedState = { counter }
-  // const store = configureStore(preloadedState)
-  const store = configureStore()
+const initRender = async (ctx) => {
+  const request = ctx.request
+  const params = qs.parse(request.querystring)
+
+  let counter = parseInt(params.counter, 10)
+
+  if (!counter) {
+    counter = await fetchCounter()
+
+    !counter && (counter =  0)
+  }
+
+  const preloadedState = { counter }
+  const store = configureStore(preloadedState)
   const context = {}
   const markup = renderToString(
     <Router
@@ -90,33 +96,10 @@ const handleRender = async (ctx) => {
       </html>
     `
   }
-
-  // const finalState = store.getState()
-
-  // ctx.body = renderFullPage(html, finalState)
 }
 
-// const renderFullPage = (html, preloadedState) => {
-//   return `
-//     <!doctype html>
-//     <html>
-//       <head>
-//         <meta charset="utf-8" />
-//         <title>Redux Universal</title>
-//       </head>
-//       <body>
-//         <div id="app">${html}</div>
-//         <script>
-//           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
-//         </script>
-//         <script src="/static/main.js"></script>
-//       </body>
-//     </html>
-//     `
-// }
-
-// app.use(logger())
-app.use(handleRender);
+app.use(logger())
+app.use(initRender);
 // app.use(koaBody({
 //   multipart: true
 // }))
